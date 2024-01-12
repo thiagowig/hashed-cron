@@ -1,6 +1,6 @@
 import hashlib
 
-HASHED_CRON = "H"
+HASHED_CRON_CHAR = "H"
 
 HASH_CONFIGS = {
     0: {"value": 60, "increment": 0},
@@ -12,10 +12,10 @@ HASH_CONFIGS = {
 
 
 def convert(cron, identifier):
-    """ Generates cron """
+    """ Converts cron """
     if cron and len(cron.split(" ")) == 5:
-        if HASHED_CRON in cron:
-            return generate_dynamic_cron(cron, identifier)
+        if HASHED_CRON_CHAR in cron:
+            return convert_hashed_cron(cron, identifier)
 
         else:
             return cron
@@ -23,13 +23,13 @@ def convert(cron, identifier):
     return None
 
 
-def generate_dynamic_cron(cron, dag_id):
-    """ Generates hashed cron """
+def convert_hashed_cron(cron, dag_id):
+    """ Converts hashed cron """
     converted_cron = str()
     cron_expression_array = cron.split(" ")
 
     for index, item in enumerate(cron_expression_array):
-        if HASHED_CRON in item and index in HASH_CONFIGS:
+        if HASHED_CRON_CHAR in item and index in HASH_CONFIGS:
             converted_cron += " " + generate_dynamic_cron_value(dag_id, index, item)
 
         else:
