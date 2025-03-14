@@ -8,12 +8,13 @@ HASH_CONFIGS = {
     2: {"value": 32, "increment": 0},
     3: {"value": 12, "increment": 1},
     4: {"value": 7, "increment": 0},
+    5: {"value": 2030, "increment": 0},
 }
 
 
 def convert(cron, identifier):
     """ Converts cron """
-    if cron and len(cron.split(" ")) == 5:
+    if cron and len(cron.split(" ")) in [5, 6]:
         if HASHED_CRON_CHAR in cron:
             return convert_hashed_cron(cron, identifier)
 
