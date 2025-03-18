@@ -40,7 +40,8 @@ from hashed_cron import cron_converter
         ("5,35 14 * * ? *", "job_01", "5,35 14 * * ? *"),
         ("15 10 ? * 6L 2019-2022", "job_01", "15 10 ? * 6L 2019-2022"),
         ("H H * * ? *", "job_01", "41 5 * * ? *"),
-        ("H H ? * H *", "1234567", "32 20 ? * 3 *")
+        ("H H ? * H *", "1234567", "32 20 ? * 4 *"),
+        ("H H ? * H *", "1000", "55 19 ? * 1 *")
     ]
 )
 def test_generate_cron(cron, identifier, expected_result):
