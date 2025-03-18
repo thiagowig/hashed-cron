@@ -8,7 +8,7 @@ with open(os.path.join(HERE, "README.md")) as fid:
 
 setup(
     name="hashed-cron",
-    version="0.2.0",
+    version="0.3.0",
     description="Utility library to convert Hashed Crons, using 'H' character.",
     long_description=README,
     long_description_content_type="text/markdown",
